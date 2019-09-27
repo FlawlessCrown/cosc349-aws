@@ -37,28 +37,28 @@ Vagrant.configure("2") do |config|
     # :aws configuration section.
 
     # The keypair_name parameter tells Amazon which public key to use.
-    ##aws.keypair_name = ""
+    aws.keypair_name = "cosc349"
     # The private_key_path is a file location in your macOS account
     # (e.g., ~/.ssh/something).
-    ##override.ssh.private_key_path = ""
+    override.ssh.private_key_path = ".ssh/cosc349.pem"
 
     # Choose your Amazon EC2 instance type (t2.micro is cheap).
-    ##aws.instance_type = "t2.micro"
+    aws.instance_type = "t2.micro"
 
     # You need to indicate the list of security groups your VM should
     # be in. Each security group will be of the form "sg-...", and
     # they should be comma-separated (if you use more than one) within
     # square brackets.
     #
-    ##aws.security_groups = [""]
+    aws.security_groups = ["sg-0bab2581277b70987"]
 
     # For Vagrant to deploy to EC2 for Amazon Educate accounts, it
     # seems that a specific availability_zone needs to be selected
     # (will be of the form "us-east-1a"). The subnet_id for that
     # availability_zone needs to be included, too (will be of the form
     # "subnet-...").
-    ##aws.availability_zone = ""
-    ##aws.subnet_id = ""
+    aws.availability_zone = "us-east-1b"
+    aws.subnet_id = "subnet-2b772905"
 
     # You need to chose the AMI (i.e., hard disk image) to use. This
     # will be of the form "ami-...".
@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
     # You need to get the region correct, and the correct form of
     # configuration (probably amd64, hvm:ebs-ssd, hvm).
     #
-    aws.ami = "ami-5cc9b22d"
+    aws.ami = "ami-02ca3cadbcb293e21"
 
     # If using Ubuntu, you probably also need to uncomment the line
     # below, so that Vagrant connects using username "ubuntu".
