@@ -1,6 +1,7 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 require 'yaml'
+require 'vagrant-aws'
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
@@ -16,11 +17,11 @@ Vagrant.configure("2") do |config|
     # We will gather the data for these three aws configuration
     # parameters from environment variables (more secure than
     # committing security credentials to your Vagrantfile).
-    aws_config = YAML::load_file('./aws/credentials.txt')
+    aws_config = (YAML.load_file('.aws/credentials.yaml'))
     aws.access_key_id = aws_config.fetch("aws_access_key_id")
     aws.secret_access_key = aws_config.fetch("aws_secret_access_key")
     aws.session_token = aws_config.fetch("aws_session_token")
-
+    
     # The region for Amazon Educate is fixed.
     aws.region = "us-east-1"
 
