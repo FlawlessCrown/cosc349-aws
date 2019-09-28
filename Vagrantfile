@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
     # We will gather the data for these three aws configuration
     # parameters from environment variables (more secure than
     # committing security credentials to your Vagrantfile).
-    aws_config = (YAML.load_file('.aws/credentials.yaml'))
+    aws_config = (YAML.load_file('.aws/credentials'))
     aws.access_key_id = aws_config.fetch("aws_access_key_id")
     aws.secret_access_key = aws_config.fetch("aws_secret_access_key")
     aws.session_token = aws_config.fetch("aws_session_token")
@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
     # You need to get the region correct, and the correct form of
     # configuration (probably amd64, hvm:ebs-ssd, hvm).
     #
-    aws.ami = "ami-02ca3cadbcb293e21"
+    aws.ami = "ami-04763b3055de4860b"
 
     # If using Ubuntu, you probably also need to uncomment the line
     # below, so that Vagrant connects using username "ubuntu".
