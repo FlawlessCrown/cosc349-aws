@@ -17,6 +17,7 @@ Vagrant.configure("2") do |config|
     # We will gather the data for these three aws configuration
     # parameters from environment variables (more secure than
     # committing security credentials to your Vagrantfile).
+
     aws_config = (YAML.load_file('.aws/credentials'))
     aws.access_key_id = aws_config.fetch("aws_access_key_id")
     aws.secret_access_key = aws_config.fetch("aws_secret_access_key")
@@ -49,8 +50,8 @@ Vagrant.configure("2") do |config|
     # be in. Each security group will be of the form "sg-...", and
     # they should be comma-separated (if you use more than one) within
     # square brackets.
-    #
-    aws.security_groups = ["sg-0bab2581277b70987"]
+    # cosc349-aws1, cosc349-web
+    aws.security_groups = ["sg-0caf317906ab28426", "sg-0d814594928f03478"]
 
     # For Vagrant to deploy to EC2 for Amazon Educate accounts, it
     # seems that a specific availability_zone needs to be selected
@@ -68,7 +69,6 @@ Vagrant.configure("2") do |config|
     #
     # You need to get the region correct, and the correct form of
     # configuration (probably amd64, hvm:ebs-ssd, hvm).
-    #
     aws.ami = "ami-04763b3055de4860b"
 
     # If using Ubuntu, you probably also need to uncomment the line
@@ -79,8 +79,8 @@ Vagrant.configure("2") do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-  # config.vm.provision "shell", inline: <<-SHELL
-  #   apt-get update
-  #   apt-get install -y apache2
-  # SHELL
+  config.vm.provision "shell", inline: <<-SHELL
+    apt-get update
+    apt-get install -y apache2
+  SHELL
 end
