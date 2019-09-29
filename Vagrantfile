@@ -37,6 +37,7 @@ Vagrant.configure("2") do |config|
       # ubuntu ami
       aws.ami = "ami-04763b3055de4860b"
       override.ssh.username = "ubuntu"
+      override.vm.synced_folder ".", "/vagrant", owner: "ubuntu", group: "ubuntu", mount_options: ["dmode=775,fmode=777"]
       override.vm.provision :shell, :path => ".provision/bootstrap_webserver1.sh"
     end
   end
@@ -68,6 +69,7 @@ Vagrant.configure("2") do |config|
       # ubuntu ami
       aws.ami = "ami-04763b3055de4860b"
       override.ssh.username = "ubuntu"
+      override.vm.synced_folder ".", "/vagrant", owner: "ubuntu", group: "ubuntu", mount_options: ["dmode=775,fmode=777"]
       override.vm.provision :shell, :path => ".provision/bootstrap_webserver2.sh"
     end
   end
