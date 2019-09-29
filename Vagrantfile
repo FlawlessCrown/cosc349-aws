@@ -30,10 +30,38 @@ Vagrant.configure("2") do |config|
       override.ssh.private_key_path = ".ssh/cosc349.pem"
       # Choose your Amazon EC2 instance type (t2.micro is cheap).
       aws.instance_type = "t2.micro"
-
       # Security groups: cosc349-aws1, cosc349-web
       aws.security_groups = ["sg-0caf317906ab28426", "sg-0d814594928f03478"]
+      aws.availability_zone = "us-east-1b"
+      aws.subnet_id = "subnet-2b772905"
+      # ubuntu ami
+      aws.ami = "ami-04763b3055de4860b"
+      override.ssh.username = "ubuntu"
+    end
+  end
 
+  config.vm.define "webserver2" do |webserver2|
+    webserver2.vm.provider :aws do |aws, override|
+      aws_config = (YAML.load_file('.aws/credentials'))
+      aws.access_key_id = aws_config.fetch("aws_access_key_id")
+      aws.secret_access_key = aws_config.fetch("aws_secret_access_key")
+      aws.session_token = aws_config.fetch("aws_session_token")
+      # The region for Amazon Educate is fixed.
+      aws.region = "us-east-1"
+      # These options force synchronisation of files to the VM's
+      # /vagrant directory using rsync, rather than using trying to use
+      # SMB (which will not be available by default).
+      override.nfs.functional = false
+      override.vm.allowed_synced_folder_types = :rsync
+      # The keypair_name parameter tells Amazon which public key to use.
+      aws.keypair_name = "cosc349"
+      # The private_key_path is a file location in your macOS account
+      # (e.g., ~/.ssh/something).
+      override.ssh.private_key_path = ".ssh/cosc349.pem"
+      # Choose your Amazon EC2 instance type (t2.micro is cheap).
+      aws.instance_type = "t2.micro"
+      # Security groups: cosc349-aws1, cosc349-web
+      aws.security_groups = ["sg-0caf317906ab28426", "sg-0d814594928f03478"]
       aws.availability_zone = "us-east-1b"
       aws.subnet_id = "subnet-2b772905"
       # ubuntu ami
