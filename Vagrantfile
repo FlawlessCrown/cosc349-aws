@@ -8,72 +8,38 @@ require 'vagrant-aws'
 # backwards compatibility). Please don't change it unless you know what
 # you're doing.
 Vagrant.configure("2") do |config|
-  # Online Vagrantfile documentation is at https://docs.vagrantup.com.
-
-  # The AWS provider does not actually need to use a Vagrant box file.
   config.vm.box = "dummy"
 
-  config.vm.provider :aws do |aws, override|
-    # We will gather the data for these three aws configuration
-    # parameters from environment variables (more secure than
-    # committing security credentials to your Vagrantfile).
+  config.vm.define "webserver1" do |webserver1|
+    webserver1.vm.provider :aws do |aws, override|
+      aws_config = (YAML.load_file('.aws/credentials'))
+      aws.access_key_id = aws_config.fetch("aws_access_key_id")
+      aws.secret_access_key = aws_config.fetch("aws_secret_access_key")
+      aws.session_token = aws_config.fetch("aws_session_token")
+      # The region for Amazon Educate is fixed.
+      aws.region = "us-east-1"
+      # These options force synchronisation of files to the VM's
+      # /vagrant directory using rsync, rather than using trying to use
+      # SMB (which will not be available by default).
+      override.nfs.functional = false
+      override.vm.allowed_synced_folder_types = :rsync
+      # The keypair_name parameter tells Amazon which public key to use.
+      aws.keypair_name = "cosc349"
+      # The private_key_path is a file location in your macOS account
+      # (e.g., ~/.ssh/something).
+      override.ssh.private_key_path = ".ssh/cosc349.pem"
+      # Choose your Amazon EC2 instance type (t2.micro is cheap).
+      aws.instance_type = "t2.micro"
 
-    aws_config = (YAML.load_file('.aws/credentials'))
-    aws.access_key_id = aws_config.fetch("aws_access_key_id")
-    aws.secret_access_key = aws_config.fetch("aws_secret_access_key")
-    aws.session_token = aws_config.fetch("aws_session_token")
-    
-    # The region for Amazon Educate is fixed.
-    aws.region = "us-east-1"
+      # Security groups: cosc349-aws1, cosc349-web
+      aws.security_groups = ["sg-0caf317906ab28426", "sg-0d814594928f03478"]
 
-    # These options force synchronisation of files to the VM's
-    # /vagrant directory using rsync, rather than using trying to use
-    # SMB (which will not be available by default).
-    override.nfs.functional = false
-    override.vm.allowed_synced_folder_types = :rsync
-
-    # Following the lab instructions should lead you to provide values
-    # appropriate for your environment for the configuration variable
-    # assignments preceded by double-hashes in the remainder of this
-    # :aws configuration section.
-
-    # The keypair_name parameter tells Amazon which public key to use.
-    aws.keypair_name = "cosc349"
-    # The private_key_path is a file location in your macOS account
-    # (e.g., ~/.ssh/something).
-    override.ssh.private_key_path = ".ssh/cosc349.pem"
-
-    # Choose your Amazon EC2 instance type (t2.micro is cheap).
-    aws.instance_type = "t2.micro"
-
-    # You need to indicate the list of security groups your VM should
-    # be in. Each security group will be of the form "sg-...", and
-    # they should be comma-separated (if you use more than one) within
-    # square brackets.
-    # cosc349-aws1, cosc349-web
-    aws.security_groups = ["sg-0caf317906ab28426", "sg-0d814594928f03478"]
-
-    # For Vagrant to deploy to EC2 for Amazon Educate accounts, it
-    # seems that a specific availability_zone needs to be selected
-    # (will be of the form "us-east-1a"). The subnet_id for that
-    # availability_zone needs to be included, too (will be of the form
-    # "subnet-...").
-    aws.availability_zone = "us-east-1b"
-    aws.subnet_id = "subnet-2b772905"
-
-    # You need to chose the AMI (i.e., hard disk image) to use. This
-    # will be of the form "ami-...".
-    # 
-    # If you want to use Ubuntu Linux, you can discover the official
-    # Ubuntu AMIs: https://cloud-images.ubuntu.com/locator/ec2/
-    #
-    # You need to get the region correct, and the correct form of
-    # configuration (probably amd64, hvm:ebs-ssd, hvm).
-    aws.ami = "ami-04763b3055de4860b"
-
-    # If using Ubuntu, you probably also need to uncomment the line
-    # below, so that Vagrant connects using username "ubuntu".
-    override.ssh.username = "ubuntu"
+      aws.availability_zone = "us-east-1b"
+      aws.subnet_id = "subnet-2b772905"
+      # ubuntu ami
+      aws.ami = "ami-04763b3055de4860b"
+      override.ssh.username = "ubuntu"
+    end
   end
 
   # Enable provisioning with a shell script. Additional provisioners such as
