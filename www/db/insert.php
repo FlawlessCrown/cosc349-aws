@@ -14,7 +14,9 @@ $options = array(
 $pdo = new PDO($dsn, $username, $password, $options);
 
 $webnote = $_POST[wnote];
-$pdo->query("INSERT INTO webNotes(note) (note) VALUES('$webnote')")
+$pdo->query("INSERT INTO webNotes (note) VALUES ('$webnote')")
+or die("An unexpected error occurred when summitting your note.");
+
 echo "Note Successfully Taken.\n";
 header("location:javascript://history.go(-1)");
 exit;

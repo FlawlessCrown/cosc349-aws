@@ -15,7 +15,8 @@
 		  border-collapse: collapse;
 		}
 		th, td {
-		  padding: 3px;;
+		  padding: 3px;
+		  width: 100%
 		}
 		td {
 		  width: 100%;

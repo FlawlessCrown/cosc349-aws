@@ -13,7 +13,8 @@ $options = array(
 
 $pdo = new PDO($dsn, $username, $password, $options);
 
-$q 	     	= $pdo->query("SELECT * FROM webNotes ORDER BY noteID");
+$q = $pdo->query("SELECT * FROM webNotes ORDER BY noteID;");
+
 while($row 	= $q->fetch() or die(mysql_error())){
   echo "<tr><td>".$row["note"]."</td></tr>\n";
 }
