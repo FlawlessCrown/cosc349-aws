@@ -10,17 +10,13 @@
 				color: inherit;
 			}
 			form input{
-				width: 100%;
+				width: 90%;
 			}
 		</style>
 	</head>
 	<body>
 		<h1>Note Taking Page</h1>
 		<form action="db/insert.php" method="post" autocomplete="off">
-			<p>
-				<label for="wnoteID">Note Number:</label>
-				<input type="text" name="wnoteID" id="wnoteID">
-			</p>
 			<p>
 				<label for="wnote">Note:</label>
 				<input type="text" name="wnote" id="wnote">

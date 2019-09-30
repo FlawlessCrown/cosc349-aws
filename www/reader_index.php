@@ -17,7 +17,7 @@
 		th, td {
 		  padding: 3px;;
 		}
-		td:last-of-type {
+		td {
 		  width: 100%;
 		}
 	</style>
