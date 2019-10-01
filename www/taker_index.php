@@ -16,16 +16,18 @@
 				margin-top:2px;
 			}
 			form input{
-				width: 100%;
+				width: 150px;
 			}
 			section {
 				width: 70%;
 				margin-left:auto;
 				margin-right:auto;
 			}
-			textarea {
-				resize: none;
+			#wnote {
 				width: 100%;
+			}
+			button {
+				width: 120px;
 			}
 		</style>
 	</head>
@@ -34,10 +36,14 @@
 			<h1>Note Taking Page</h1>
 			<form action="db/insert.php" method="post" autocomplete="off">
 				<p>
-					<label for="wnote">Note:</label>
-					<textarea type="text" name="wnote" id="wnote" maxlength="70"></textarea>
+					<label for="userid">UserID:</label>
+					<br><input type="text" name="userid" id="userid" maxlength="9" value="default">
 				</p>
-				<input type="submit" value="Add">
+				<p>
+					<label for="wnote">Note:</label>
+					<br><input type="text" name="wnote" id="wnote" maxlength="70">
+				</p>
+				<button type="submit" name="inserting">Add Note</button>
 			</form>
 		</section>
 	</body>
