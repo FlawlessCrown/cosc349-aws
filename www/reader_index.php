@@ -36,6 +36,9 @@
 	<body>
 		<section>
 			<h1>Note Reader Page</h1>
+			<form action="db/deleteall.php">
+				<button type="submit" value="Delete All Notes">Delete All Notes</button>
+			</form>
 			<table border="1">
 				<?php require 'db/read.php';?>
 			</table>

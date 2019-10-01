@@ -35,7 +35,7 @@
 			<form action="db/insert.php" method="post" autocomplete="off">
 				<p>
 					<label for="wnote">Note:</label>
-					<textarea type="text" name="wnote" id="wnote"></textarea>
+					<textarea type="text" name="wnote" id="wnote" maxlength="70"></textarea>
 				</p>
 				<input type="submit" value="Add">
 			</form>
