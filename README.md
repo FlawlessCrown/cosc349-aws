@@ -23,3 +23,9 @@ Steps to deploy Note Taker and Note Reader application on Windows:
   - For AMIs, they should be fine. If they are not, go to https://cloud-images.ubuntu.com/locator/ec2/ to find a suitable one.
   - Then run "vagrant up" from Powershell after configuring Vagrantfile
   - To view webpages, go to EC2 instances in aws and open either the Public DNS (IPv4) or the IPv4 Public IP
+  - Now to set up a Database, go to aws and choose your prefered database from RDS (I used mysql)
+  - After the database finishes setting up its instance, you need to go into the folder www and into the sub directories to get up the $dbhose as the endpoint, the username as the one you used to make the database as well as the password.
+  - Then you need to create the tables, I used ubuntu to do this. Install mysql with "sudo apt-get update" then "sudo apt-get install mysql-client"
+  - The command to get into your database is "mysql -h yourendpoint -P 3306 -u yourusername -p", it will prompt for password.
+  - Create the database notes with "CREATE DATABASE notes" and use it with "USE notes"
+  - Then to create the table for webNotes "CREATE TABLE webNotes(noteID int(11) NOT NULL auto_increment, note varchar(100), userID varchar(9) DEFAULT 'default', primary key(noteID));"
