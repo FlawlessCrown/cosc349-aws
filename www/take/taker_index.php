@@ -17,12 +17,12 @@
 						} else{
 							$userid = 'default';
 						}
-						echo "<br><input type='text' name='userid' id='userid' required='required' pattern='[A-Za-z0-9]{1,9}' value='$userid' onclick='this.select();'/>";
+						echo "<br><input type='text' name='userid' id='userid' required='required' pattern='[A-Za-z0-9 ]{1,9}' value='$userid' onclick='this.select();'/>";
 					?>
 				</p>
 				<p>
 					<label for="wnote">Note:</label>
-					<br><input type="text" name="wnote" id="wnote" maxlength="100" autofocus required="required" pattern="[A-Za-z0-9]{1,100}">
+					<br><input type="text" name="wnote" id="wnote" maxlength="100" autofocus required="required" pattern="[A-Za-z0-9 ]{1,100}">
 				</p>
 				<button type="submit" name="inserting">Add Note</button>
 			</form>

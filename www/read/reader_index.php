@@ -10,7 +10,7 @@
 			<h1>Note Reader Page</h1>
 			<form action="deleteuser.php" method="post">
 				<button type="submit" value="Delete All Notes" name="deleteall">Delete User Notes:</button>
-				<input type="text" name="userid"  required="required" pattern="[A-Za-z0-9]{1,9}" id="userid" maxlength="9">
+				<input type="text" name="userid"  required="required" pattern="[A-Za-z0-9 ]{1,9}" id="userid" maxlength="9">
 			</form>
 			<form action="reader_index.php" method="post">
 				<button type="submit" value="View User" name="viewuser">View User:</button>
@@ -20,7 +20,7 @@
 					} else {
 						$userid = 'default';
 					}
-					echo "<input type='text' name='userid' id='userid' required='required' pattern='[A-Za-z0-9]{1,9}' value='$userid' autofocus onfocus='this.select();'/>";
+					echo "<input type='text' name='userid' id='userid' required='required' pattern='[A-Za-z0-9 ]{1,9}' value='$userid' autofocus onfocus='this.select();'/>";
 				?>
 			</form>
 			<table border="1">
