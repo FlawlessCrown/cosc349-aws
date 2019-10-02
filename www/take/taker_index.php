@@ -17,7 +17,7 @@
 						} else{
 							$userid = 'default';
 						}
-						echo "<br><input type='text' name='userid' id='userid' required='required' pattern='[A-Za-z0-9 ]{1,9}' value='$userid' onclick='this.select();'/>";
+						echo "<br><input type='text' name='userid' id='userid' required='required' pattern='[A-Za-z0-9 ]{1,9}' maxlength='9' value='$userid' onclick='this.select();'/>";
 					?>
 				</p>
 				<p>
