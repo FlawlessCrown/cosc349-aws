@@ -25,11 +25,11 @@
 			</form>
 			<table border="1">
 				<?php
-				$dbhost = 'webnotes.cn4fbzuyvxpk.us-east-1.rds.amazonaws.com';
+				$dbhost = '';
 				$dbname = 'notes';
 				$dsn = "mysql:host={$dbhost};dbname={$dbname};";
-				$username = 'admin';
-				$password = '!4h5CDEdyph8';
+				$username = '';
+				$password = '';
 				if(isset($_POST[userid])){
 					$userid = $_POST[userid];
 				} else {

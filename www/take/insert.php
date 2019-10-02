@@ -1,9 +1,9 @@
 <?php
-$dbhost = 'webnotes.cn4fbzuyvxpk.us-east-1.rds.amazonaws.com';
+$dbhost = '';
 $dbname = 'notes';
 $dsn = "mysql:host={$dbhost};dbname={$dbname};";
-$username = 'admin';
-$password = '!4h5CDEdyph8';
+$username = '';
+$password = '';
 $pdo = new PDO($dsn, $username, $password);
 $webnote = $_POST[wnote];
 if(isset($_POST[userid])){ 

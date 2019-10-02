@@ -24,14 +24,14 @@ Vagrant.configure("2") do |config|
       override.nfs.functional = false
       override.vm.allowed_synced_folder_types = :rsync
       # The keypair_name parameter tells Amazon which public key to use.
-      aws.keypair_name = "cosc349"
+      ##aws.keypair_name = ""
       # The private_key_path is a file location in your macOS account
       # (e.g., ~/.ssh/something).
-      override.ssh.private_key_path = ".ssh/cosc349.pem"
+      ##override.ssh.private_key_path = ".ssh/"
       # Choose your Amazon EC2 instance type (t2.micro is cheap).
       aws.instance_type = "t2.micro"
       # Security groups
-      aws.security_groups = ["sg-0caf317906ab28426", "sg-0d814594928f03478"]
+      ##aws.security_groups = ["", ""]
       aws.availability_zone = "us-east-1b"
       aws.subnet_id = "subnet-2b772905"
       # ubuntu ami
@@ -56,14 +56,14 @@ Vagrant.configure("2") do |config|
       override.nfs.functional = false
       override.vm.allowed_synced_folder_types = :rsync
       # The keypair_name parameter tells Amazon which public key to use.
-      aws.keypair_name = "cosc349"
+      ##aws.keypair_name = ""
       # The private_key_path is a file location in your macOS account
       # (e.g., ~/.ssh/something).
-      override.ssh.private_key_path = ".ssh/cosc349.pem"
+      ##override.ssh.private_key_path = ".ssh/"
       # Choose your Amazon EC2 instance type (t2.micro is cheap).
       aws.instance_type = "t2.micro"
       # Security groups: cosc349-aws1, cosc349-web
-      aws.security_groups = ["sg-0caf317906ab28426", "sg-0d814594928f03478"]
+      ##aws.security_groups = ["", ""]
       aws.availability_zone = "us-east-1b"
       aws.subnet_id = "subnet-2b772905"
       # ubuntu ami
