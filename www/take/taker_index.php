@@ -22,7 +22,7 @@
 				</p>
 				<p>
 					<label for="wnote">Note:</label>
-					<br><input type="text" name="wnote" id="wnote" maxlength="100" autofocus required="required" pattern="[A-Za-z0-9 ]{1,100}">
+					<br><input type="text" name="wnote" id="wnote" maxlength="400" autofocus required="required" pattern=".{1,400}">
 				</p>
 				<button type="submit" name="inserting">Add Note</button>
 			</form>
