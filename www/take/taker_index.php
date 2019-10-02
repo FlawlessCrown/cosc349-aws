@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		<title>Note Taker test</title>
+		<title>Note Taker</title>
 		<link href="StyleSheet.css" rel="stylesheet", type="text/css">
 	</head>
 	<body>
