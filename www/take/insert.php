@@ -14,6 +14,7 @@ if(isset($_POST[userid])){
 $pdo->query("INSERT INTO webNotes (note, userID) VALUES ('$webnote', '$userid')")
 or die("An unexpected error occurred when summitting your note.");
 echo "Note Successfully Taken.\n";
-header("refresh:0; url=taker_index.php");
+$url = 'taker_index.php?userid=$userid';
+header('refresh:0; url=taker_index.php?userid='.$userid);
 exit;
 ?>
