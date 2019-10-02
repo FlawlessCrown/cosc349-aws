@@ -3,55 +3,25 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Note Reader</title>
-		<style>
-			html {
-				background-color: #99e6ff;
-				font-size: 18px;
-				color: inherit;
-			}
-			h1:after {
-					content: ' ';
-					display: block;
-					border: 2px solid black;
-					margin-top:2px;
-				}
-			th { 
-				text-align: left; 
-			}
-			table, th, td {
-				border: 2px solid;
-				border-collapse: collapse;
-			}
-			th, tr, table{
-				padding: 3px;
-				width: 100%;
-			}
-			td{
-				width:80%;
-			}
-			td:last-of-type {
-				width: 20%;
-			}
-			section {
-				width: 70%;
-				margin-left:auto;
-				margin-right:auto;
-			}
-			button {
-				width: 160px;
-			}
-		</style>
+		<link href="StyleSheet.css" rel="stylesheet", type="text/css">
 	</head>
 	<body>
 		<section>
 			<h1>Note Reader Page</h1>
-			<form action="db/deleteall.php" method="post">
+			<form action="deleteuser.php" method="post">
 				<button type="submit" value="Delete All Notes" name="deleteall">Delete User Notes:</button>
 				<input type="text" name="userid" id="userid" maxlength="9">
 			</form>
 			<form action="reader_index.php" method="post">
 				<button type="submit" value="View User" name="viewuser">View User:</button>
-				<input type="text" name="userid" id="userid" maxlength="9" value="default">
+				<?php
+					if(isset($_POST[userid])){
+						$userid = $_POST[userid];
+					} else {
+						$userid = 'default';
+					}
+					echo "<input type='text' name='userid' id='userid' maxlength='9' value='$userid' autofocus onfocus='this.select();'/>";
+				?>
 			</form>
 			<table border="1">
 				<?php

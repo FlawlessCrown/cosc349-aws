@@ -10,6 +10,6 @@ $userid = $_POST[userid];
 $pdo->query("DELETE FROM webNotes WHERE userID='$userid'")
 or die("An unexpected error occurred when deleting your note.");
 echo "All Notes Successfully Deleted From $userid.\n";
-header("refresh:1; url=../reader_index.php");
+header("refresh:1; url=reader_index.php");
 exit;
 ?>
