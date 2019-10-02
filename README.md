@@ -7,17 +7,17 @@ Steps to deploy Note Taker and Note Reader application on Windows:
   - Install Vagrant (https://www.vagrantup.com).
   - Open Windows Powershell and run command:
     - "vagrant plugin install --plugin-version 1.0.1 fog-ovirt"
-    - "vagrant olugin install vagrant-aws"
+    - "vagrant plugin install vagrant-aws"
   - In .aws put in your aws account details credentials into credentials.
   - Create a keypair in aws under network and security. It should prompt a file to download.
   - Move the file into .ssh and in Vagrantfile, set aws.keypair_name and the override.ssh.private_key_path to your keypair
   - Choose instance type. (I would keep it at t2.micro)
   - Create two security groups in aws:
     - The first one is to allow access to ssh
-    - Set inbound type ssh and the source as 0.0.0.0/0 and another as ::/0
+    - Set inbound type ssh and for each of inbound type, set the source as 0.0.0.0/0 and another as ::/0
     - Set outbound type as all trafic and source as 0.0.0.0/0
     - The second security groups is to allow access for web
-    - Set inbound type type to HTTP and another one to HTTPS. And for each of the types, set the sources as 0.0.0.0/0 and another as ::/0
+    - Set inbound type to HTTP and another one to HTTPS. And for each of the types, set the sources as 0.0.0.0/0 and another as ::/0
   - After creating the two security groups, put the two security group IDs into vagrant file for aws.security_groups
   - For subnet ID, you create one in aws under VPC.
   - For AMIs, they should be fine. If they are not, go to https://cloud-images.ubuntu.com/locator/ec2/ to find a suitable one.
