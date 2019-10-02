@@ -28,4 +28,4 @@ Steps to deploy Note Taker and Note Reader application on Windows:
   - Then you need to create the tables, I used ubuntu to do this. Install mysql with "sudo apt-get update" then "sudo apt-get install mysql-client"
   - The command to get into your database is "mysql -h yourendpoint -P 3306 -u yourusername -p", it will prompt for password.
   - Create the database notes with "CREATE DATABASE notes" and use it with "USE notes"
-  - Then to create the table for webNotes "CREATE TABLE webNotes(noteID int(11) NOT NULL auto_increment, note varchar(100), userID varchar(9) DEFAULT 'default', primary key(noteID));"
+  - Then to create the table for webNotes "CREATE TABLE webNotes(noteID int(11) NOT NULL auto_increment, note varchar(400), userID varchar(9) DEFAULT 'default', primary key(noteID));"
