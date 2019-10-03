@@ -24,7 +24,7 @@ Steps to deploy Note Taker and Note Reader application on Windows:
   - Then run "vagrant up" from Powershell after configuring Vagrantfile
   - To view webpages, go to EC2 instances in aws and open either the Public DNS (IPv4) or the IPv4 Public IP
   - Now to set up a Database, go to aws and choose your prefered database from RDS (I used mysql)
-  - After the database finishes setting up its instance, you need to go into the folder www and into its sub directories to set up the $dbhost as the endpoint, a username as the one you used to make the database as well as the password.
+  - After the database finishes setting up its instance, you need to go into the folder www and into its sub directories to set up the $dbhost as the endpoint, the $username as the user you used to make the database as well as the $password.
   - Then you need to create the tables, I used ubuntu to do this. Install mysql with "sudo apt-get update" then "sudo apt-get install mysql-client"
   - The command to get into your database is "mysql -h yourendpoint -P 3306 -u yourusername -p", it will prompt for password.
   - Create the database notes with "CREATE DATABASE notes" and use it with "USE notes"
