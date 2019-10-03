@@ -2,6 +2,8 @@
 Student ID: 8482738
 
 This is the second assignment for COSC349. This assignment uses vagrant-aws plugin to deploy to aws using amazon educate credentials.
+http://ec2-3-86-162-0.compute-1.amazonaws.com/taker_index.php
+http://ec2-54-211-203-27.compute-1.amazonaws.com/reader_index.php
 
 Steps to deploy Note Taker and Note Reader application on Windows:
   - Install Vagrant (https://www.vagrantup.com).
